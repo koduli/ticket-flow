@@ -40,3 +40,26 @@ export async function DELETE(req, { params }) {
     });
   }
 }
+
+export async function PUT(req, { params }) {
+  try {
+    const { id } = params;
+    const { formData } = await req.json(); // Parse the JSON body
+
+    if (!id) {
+      return new NextResponse(JSON.stringify({ message: "Missing ID" }), {
+        status: 400,
+      });
+    }
+
+    await Ticket.findByIdAndUpdate(id, formData);
+    return new NextResponse(JSON.stringify({ message: "Ticket Updated" }), {
+      status: 200,
+    });
+  } catch (error) {
+    console.error(error);
+    return new NextResponse(JSON.stringify({ message: "Error", error }), {
+      status: 500,
+    });
+  }
+}
