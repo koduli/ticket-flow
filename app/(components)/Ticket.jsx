@@ -1,9 +1,11 @@
+// Ticket.jsx
 import Delete from "./Delete";
 import Priority from "./Priority";
 import Progress from "./Progress";
 import Status from "./Status";
 
 const Ticket = ({
+  _id,
   title,
   description,
   priority,
@@ -11,13 +13,15 @@ const Ticket = ({
   status,
   category,
   createdAt,
+  fetchTickets, // Receive fetchTickets
 }) => {
   return (
     <div className="flex flex-col bg-card hover:bg-card-hover rounded-md shadow-lg p-3 m-2">
       <div className="flex mb-3">
         <Priority priority={priority} />
         <div className="ml-auto">
-          <Delete />
+          <Delete id={_id} fetchTickets={fetchTickets} />{" "}
+          {/* Pass fetchTickets to Delete */}
         </div>
       </div>
       <h4>{title}</h4>
