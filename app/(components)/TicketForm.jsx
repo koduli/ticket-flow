@@ -3,7 +3,8 @@
 import { useRouter } from "next/navigation"; // Corrected import path
 import { useState } from "react";
 
-const TicketForm = () => {
+const TicketForm = ({ ticket }) => {
+  const EDIT_MODE = ticket._id === "new" ? false : true; // Simplified condition
   const router = useRouter();
   const startingTicketData = {
     title: "",
@@ -11,10 +12,12 @@ const TicketForm = () => {
     priority: 1, // Default priority as a number
     progress: 0,
     status: "open",
-    category: "bug",
+    category: "task",
   };
 
-  const [formData, setFormData] = useState(startingTicketData);
+  const [formData, setFormData] = useState(
+    EDIT_MODE ? ticket : startingTicketData
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,7 +51,7 @@ const TicketForm = () => {
         method="post"
         onSubmit={handleSubmit}
       >
-        <h3>Create your ticket</h3>
+        <h3>{EDIT_MODE ? "Update your Ticket" : "Create your ticket"}</h3>
         <label>Title</label>
         <input
           id="title"
@@ -141,7 +144,11 @@ const TicketForm = () => {
           <option value="done">Done</option>
         </select>
 
-        <input type="submit" className="btn" value="Create ticket" />
+        <input
+          type="submit"
+          className="btn"
+          value={EDIT_MODE ? "Update Ticket" : "Create ticket"}
+        />
       </form>
     </div>
   );

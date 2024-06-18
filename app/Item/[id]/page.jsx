@@ -24,16 +24,20 @@ const Item = async ({ params }) => {
   if (EDIT_MODE) {
     updateTicketData = await getTicketById(params.id);
     if (!updateTicketData) {
-      // Handle the case where ticket data couldn't be fetched
       console.error("Failed to fetch ticket data.");
-      return <div>Error fetching ticket data</div>; // Show error or handle appropriately
+      return <div>Error fetching ticket data</div>;
     }
-    console.log(updateTicketData);
-    // Pass updateTicketData to TicketForm as props if needed
-    return <TicketForm ticketData={updateTicketData} />;
+    updateTicketData = updateTicketData.foundTicket;
+  } else {
+    updateTicketData = {
+      _id: "new",
+      title: "",
+      description: "",
+      priority: "low",
+      status: "open",
+    };
   }
-  // Handle the case for new ticket creation
-  return <TicketForm />;
+  return <TicketForm ticket={updateTicketData} />;
 };
 
 export default Item;
