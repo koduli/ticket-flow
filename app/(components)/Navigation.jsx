@@ -1,20 +1,21 @@
-import { faHome, faTicket } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { GrTask } from "react-icons/gr";
+import { ImTicket } from "react-icons/im";
 import Link from "next/link";
 
 const Navigation = () => {
   return (
-    <nav className="flex justify-between bg-nav p-4">
-      <div className="flex items-center space-x-4">
-        <Link href="/">
-          <FontAwesomeIcon icon={faHome} className="icon" />
+    <nav className="flex justify-between bg-nav p-6">
+      <div className="flex items-center space-x-10">
+        <Link href="/" legacyBehavior>
+          <a>
+            <GrTask className="icon" style={{ fontSize: "2rem" }} />
+          </a>
         </Link>
-        <Link href="/Item/new">
-          <FontAwesomeIcon icon={faTicket} className="icon" />
+        <Link href="/Item/new" legacyBehavior>
+          <a>
+            <ImTicket className="icon" style={{ fontSize: "2rem" }} />
+          </a>
         </Link>
-      </div>
-      <div>
-        <p className="text-defaukt-text">example@outlook.com</p>
       </div>
     </nav>
   );
