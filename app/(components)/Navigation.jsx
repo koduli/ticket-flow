@@ -17,7 +17,7 @@ const Navigation = () => {
           <span style={{ color: "white" }}>Board</span>
         </a>
       </Link>
-      <Link href="/backlog" legacyBehavior>
+      <Link href="/Backlog" legacyBehavior>
         <a className="flex items-center space-x-2">
           <FaTasks className="icon" style={{ fontSize: "2rem" }} />
           <span style={{ color: "white" }}>Backlog</span>
@@ -29,7 +29,7 @@ const Navigation = () => {
           <span style={{ color: "white" }}>New ticket</span>
         </a>
       </Link>
-      <Link href="/search" legacyBehavior>
+      <Link href="/Search" legacyBehavior>
         <a className="flex items-center space-x-2">
           <IoSearchSharp className="icon" style={{ fontSize: "2rem" }} />
           <span style={{ color: "white" }}>Search</span>
