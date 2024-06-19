@@ -29,16 +29,17 @@ const Dashboard = () => {
     });
   };
 
-  const statuses = ["open", "in_progress", "done"];
+  const statuses = ["todo", "in_progress", "done"];
 
   return (
     <div className="padding-5">
-      <div className="lg:grid grid-cols-1 xl:grid-cols-3 gap-4">
+      <div className="lg:grid grid-cols-1 xl:grid-cols-3 gap-10">
         {statuses.map((status, index) => (
           <div key={index} className="mb-4">
-            <h2 className="text-center capitalize">
+            <h2 className="text-center capitalize py-7">
               {status.replace("_", " ")}
             </h2>
+            <hr className="w-full h-1 bg-gray-400 mb-4 rounded" />{" "}
             <div className="flex flex-col">
               {sortTickets(
                 tickets.filter((ticket) => ticket.status === status)

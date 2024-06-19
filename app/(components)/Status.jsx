@@ -2,7 +2,7 @@ const Status = ({ status = "unknown" }) => {
   const getColor = (status) => {
     let color = "";
     switch (status.toLowerCase()) {
-      case "open":
+      case "todo":
         color = "bg-red-500";
         return color;
       case "in_progress":
