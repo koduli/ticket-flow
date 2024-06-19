@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Ticket from "./(components)/Ticket";
+import Ticket from "./(components)/TicketCard";
 
 const Dashboard = () => {
   const [tickets, setTickets] = useState([]);
