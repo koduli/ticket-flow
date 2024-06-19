@@ -38,7 +38,7 @@ const SearchPage = () => {
 
   return (
     <div className="p-5">
-      <h1 className="text-center mb-5">Search tickets</h1>
+      <h1 className="text-center mb-5">Search for a ticket</h1>
       <div className="flex justify-center">
         <input
           type="text"

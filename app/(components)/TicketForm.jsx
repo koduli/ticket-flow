@@ -11,7 +11,7 @@ const TicketForm = ({ ticket }) => {
     description: "",
     priority: 1,
     progress: 0,
-    status: "open",
+    status: "todo",
     category: "task",
   };
 
@@ -66,7 +66,9 @@ const TicketForm = ({ ticket }) => {
         method="post"
         onSubmit={handleSubmit}
       >
-        <h3>{EDIT_MODE ? "Update your Ticket" : "Create your ticket"}</h3>
+        <h1 className="text-center mb-5">
+          {EDIT_MODE ? "Update a ticket" : "Create a new ticket"}
+        </h1>
         <label>Title</label>
         <input
           id="title"
@@ -99,46 +101,54 @@ const TicketForm = ({ ticket }) => {
         </select>
 
         <label>Priority</label>
-        <div>
-          <input
-            id="priority-low"
-            name="priority"
-            type="radio"
-            value="1"
-            onChange={handleChange}
-            checked={formData.priority == 1}
-          />
-          <label>Low</label>
+        <div className="flex justify-around items-center mt-2 mx-4">
+          <div>
+            <input
+              id="priority-low"
+              name="priority"
+              type="radio"
+              value="1"
+              onChange={handleChange}
+              checked={formData.priority == 1}
+            />
+            <label htmlFor="priority-low">Low</label>
+          </div>
 
-          <input
-            id="priority-medium"
-            name="priority"
-            type="radio"
-            value="2"
-            onChange={handleChange}
-            checked={formData.priority == 2}
-          />
-          <label>Medium</label>
+          <div>
+            <input
+              id="priority-medium"
+              name="priority"
+              type="radio"
+              value="2"
+              onChange={handleChange}
+              checked={formData.priority == 2}
+            />
+            <label htmlFor="priority-medium">Medium</label>
+          </div>
 
-          <input
-            id="priority-high"
-            name="priority"
-            type="radio"
-            value="3"
-            onChange={handleChange}
-            checked={formData.priority == 3}
-          />
-          <label>High</label>
+          <div>
+            <input
+              id="priority-high"
+              name="priority"
+              type="radio"
+              value="3"
+              onChange={handleChange}
+              checked={formData.priority == 3}
+            />
+            <label htmlFor="priority-high">High</label>
+          </div>
 
-          <input
-            id="priority-very-high"
-            name="priority"
-            type="radio"
-            value="4"
-            onChange={handleChange}
-            checked={formData.priority == 4}
-          />
-          <label>Very high</label>
+          <div>
+            <input
+              id="priority-very-high"
+              name="priority"
+              type="radio"
+              value="4"
+              onChange={handleChange}
+              checked={formData.priority == 4}
+            />
+            <label htmlFor="priority-very-high">Very high</label>
+          </div>
         </div>
 
         <label>Progress</label>
@@ -154,16 +164,17 @@ const TicketForm = ({ ticket }) => {
 
         <label>Status</label>
         <select name="status" value={formData.status} onChange={handleChange}>
-          <option value="open">ToDo</option>
-          <option value="in_progress">In progress</option>
+          <option value="todo">Todo</option>
+          <option value="in_progress">In Progress</option>
           <option value="done">Done</option>
         </select>
 
-        <input
+        <button
           type="submit"
-          className="btn"
-          value={EDIT_MODE ? "Update Ticket" : "Create ticket"}
-        />
+          className="w-3/4 py-4 px-4 mt-10 bg-cyan-800 hover:bg-stone-600 text-white font-bold mx-auto rounded"
+        >
+          {EDIT_MODE ? "Update ticket" : "Create new ticket"}
+        </button>
       </form>
     </div>
   );

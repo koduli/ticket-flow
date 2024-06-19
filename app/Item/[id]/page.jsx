@@ -33,7 +33,7 @@ const Item = async ({ params }) => {
       title: "",
       description: "",
       priority: "low",
-      status: "open",
+      status: "todo",
     };
   }
   return <TicketForm ticket={updateTicketData} />;
