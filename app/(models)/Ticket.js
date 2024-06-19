@@ -1,4 +1,3 @@
-// models/Ticket.js
 import mongoose, { Schema } from "mongoose";
 
 mongoose.connect(process.env.MONGODB_URI, {
@@ -22,7 +21,6 @@ const ticketSchema = new Schema(
 
 const Ticket = mongoose.models.Ticket || mongoose.model("Ticket", ticketSchema);
 
-// Function to create text index
 async function createTextIndex() {
   try {
     await Ticket.collection.createIndex(
@@ -35,7 +33,6 @@ async function createTextIndex() {
   }
 }
 
-// Call the function to create the index
 createTextIndex();
 
 export default Ticket;

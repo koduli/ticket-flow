@@ -1,4 +1,3 @@
-// app/Search/page.jsx
 "use client";
 
 import React, { useState } from "react";
@@ -19,8 +18,7 @@ const SearchPage = () => {
     try {
       const res = await fetch(`/api/search?q=${query}`);
       const data = await res.json();
-      console.log("Search results:", data); // Debugging line
-      setTickets(data.tickets || []); // Safeguard against undefined tickets
+      setTickets(data.tickets);
     } catch (error) {
       console.error("Error searching tickets:", error);
     } finally {
@@ -29,26 +27,45 @@ const SearchPage = () => {
   };
 
   const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-    searchTickets(e.target.value);
+    const query = e.target.value;
+    setSearchQuery(query);
+    searchTickets(query);
   };
+
+  const messageContainerClass = "flex justify-center py-5 min-h-[4rem]";
+  const visibleClass = "opacity-100";
+  const hiddenClass = "opacity-0 pointer-events-none";
 
   return (
     <div className="p-5">
-      <h1 className="text-center mb-5">Search Tickets</h1>
-      <input
-        type="text"
-        placeholder="Search tickets..."
-        value={searchQuery}
-        onChange={handleSearch}
-        className="w-full p-2 border border-gray-300 rounded mb-5"
-      />
-      {loading && <p>Loading...</p>}
-      <div className="grid grid-cols-1 gap-4">
-        {tickets.map((ticket) => (
-          <Ticket key={ticket._id} {...ticket} fetchTickets={() => {}} />
-        ))}
+      <h1 className="text-center mb-5">Search tickets</h1>
+      <div className="flex justify-center">
+        <input
+          type="text"
+          placeholder="Search tickets..."
+          value={searchQuery}
+          onChange={handleSearch}
+          className="w-1/2 p-2 border border-gray-300 rounded mb-5"
+        />
       </div>
+      <div className={messageContainerClass}>
+        <p
+          className={
+            loading || (!loading && tickets.length === 0 && searchQuery)
+              ? visibleClass
+              : hiddenClass
+          }
+        >
+          {loading ? "Loading..." : "No tickets found."}
+        </p>
+      </div>
+      {searchQuery && tickets.length > 0 && (
+        <div className="grid grid-cols-3 gap-4">
+          {tickets.map((ticket) => (
+            <Ticket key={ticket._id} {...ticket} fetchTickets={() => {}} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

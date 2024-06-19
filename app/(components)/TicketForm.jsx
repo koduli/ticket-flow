@@ -1,15 +1,15 @@
 "use client";
 
-import { useRouter } from "next/navigation"; // Corrected import path
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const TicketForm = ({ ticket }) => {
-  const EDIT_MODE = ticket._id === "new" ? false : true; // Simplified condition
+  const EDIT_MODE = ticket._id === "new" ? false : true;
   const router = useRouter();
   const startingTicketData = {
     title: "",
     description: "",
-    priority: 1, // Default priority as a number
+    priority: 1,
     progress: 0,
     status: "open",
     category: "task",
@@ -23,7 +23,7 @@ const TicketForm = ({ ticket }) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "priority" ? parseInt(value) : value, // Parse priority to an integer
+      [name]: name === "priority" ? parseInt(value) : value,
     }));
   };
 
@@ -104,7 +104,7 @@ const TicketForm = ({ ticket }) => {
             id="priority-low"
             name="priority"
             type="radio"
-            value="1" // Use numeric values
+            value="1"
             onChange={handleChange}
             checked={formData.priority == 1}
           />
@@ -114,7 +114,7 @@ const TicketForm = ({ ticket }) => {
             id="priority-medium"
             name="priority"
             type="radio"
-            value="2" // Use numeric values
+            value="2"
             onChange={handleChange}
             checked={formData.priority == 2}
           />
@@ -124,7 +124,7 @@ const TicketForm = ({ ticket }) => {
             id="priority-high"
             name="priority"
             type="radio"
-            value="3" // Use numeric values
+            value="3"
             onChange={handleChange}
             checked={formData.priority == 3}
           />
@@ -134,7 +134,7 @@ const TicketForm = ({ ticket }) => {
             id="priority-very-high"
             name="priority"
             type="radio"
-            value="4" // Use numeric values
+            value="4"
             onChange={handleChange}
             checked={formData.priority == 4}
           />
