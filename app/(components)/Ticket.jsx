@@ -22,7 +22,6 @@ const Ticket = ({
         <Priority priority={priority} />
         <div className="ml-auto">
           <Delete id={_id} fetchTickets={fetchTickets} />{" "}
-          {/* Pass fetchTickets to Delete */}
         </div>
       </div>
       <Link href={`Item/${_id}`} style={{ display: "contents" }}>
