@@ -14,7 +14,7 @@ const Ticket = ({
   status,
   category,
   createdAt,
-  fetchTickets, // Receive fetchTickets
+  fetchTickets,
 }) => {
   return (
     <div className="flex flex-col bg-card hover:bg-card-hover rounded-md shadow-lg p-3 m-2">

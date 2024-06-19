@@ -1,4 +1,3 @@
-// Delete.jsx
 "use client";
 
 import { faX } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +12,7 @@ const Delete = ({ id, fetchTickets }) => {
       method: "DELETE",
     });
     if (res.ok) {
-      fetchTickets(); // Call fetchTickets to refresh data
+      fetchTickets();
     } else {
       console.error("Failed to delete ticket");
     }
