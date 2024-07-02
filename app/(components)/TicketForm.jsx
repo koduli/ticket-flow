@@ -20,6 +20,7 @@ const TicketForm = ({ ticket }) => {
   );
   const [initialData] = useState(EDIT_MODE ? ticket : startingTicketData);
   const [noChangesMessage, setNoChangesMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,6 +52,7 @@ const TicketForm = ({ ticket }) => {
 
     setFormData(newFormData);
     setNoChangesMessage(''); // Reset message on change
+    setErrorMessage(''); // Reset error message on change
   };
 
   const handleSubmit = async (e) => {
@@ -61,38 +63,42 @@ const TicketForm = ({ ticket }) => {
       return;
     }
 
-    if (EDIT_MODE) {
-      const res = await fetch(`/api/Tickets/${ticket._id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ formData }),
-      });
+    try {
+      if (EDIT_MODE) {
+        const res = await fetch(`/api/Tickets/${ticket._id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ formData }),
+        });
 
-      if (!res.ok) {
-        throw new Error('Failed to update ticket.');
+        if (!res.ok) {
+          throw new Error('Failed to update ticket.');
+        }
+
+        alert('Ticket updated.'); // Feedback message
+      } else {
+        const res = await fetch('/api/Tickets', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ formData }),
+        });
+
+        if (!res.ok) {
+          throw new Error('Failed to create ticket.');
+        }
+
+        alert('Ticket created.'); // Feedback message
       }
 
-      alert('Ticket updated.'); // Feedback message
-    } else {
-      const res = await fetch('/api/Tickets', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ formData }),
-      });
-
-      if (!res.ok) {
-        throw new Error('Failed to create ticket.');
-      }
-
-      alert('Ticket created.'); // Feedback message
+      router.refresh();
+      router.push('/');
+    } catch (error) {
+      setErrorMessage(error.message);
     }
-
-    router.refresh();
-    router.push('/');
   };
 
   return (
@@ -207,6 +213,9 @@ const TicketForm = ({ ticket }) => {
 
         {noChangesMessage && (
           <p className="text-red-500 text-center">{noChangesMessage}</p>
+        )}
+        {errorMessage && (
+          <p className="text-red-500 text-center">{errorMessage}</p>
         )}
         <button
           type="submit"
