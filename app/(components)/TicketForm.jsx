@@ -18,6 +18,8 @@ const TicketForm = ({ ticket }) => {
   const [formData, setFormData] = useState(
     EDIT_MODE ? ticket : startingTicketData
   );
+  const [initialData] = useState(EDIT_MODE ? ticket : startingTicketData);
+  const [noChangesMessage, setNoChangesMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,10 +50,16 @@ const TicketForm = ({ ticket }) => {
     }
 
     setFormData(newFormData);
+    setNoChangesMessage(''); // Reset message on change
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (EDIT_MODE && JSON.stringify(formData) === JSON.stringify(initialData)) {
+      setNoChangesMessage('No changes made.');
+      return;
+    }
 
     if (EDIT_MODE) {
       const res = await fetch(`/api/Tickets/${ticket._id}`, {
@@ -197,6 +205,9 @@ const TicketForm = ({ ticket }) => {
           <option value="done">Done</option>
         </select>
 
+        {noChangesMessage && (
+          <p className="text-red-500 text-center">{noChangesMessage}</p>
+        )}
         <button
           type="submit"
           className="w-3/4 py-4 px-4 mt-10 bg-cyan-800 hover:bg-stone-600 text-white font-bold mx-auto rounded"
