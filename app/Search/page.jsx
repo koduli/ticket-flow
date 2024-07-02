@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import Ticket from "../(components)/TicketCard";
+import React, { useState } from 'react';
+import Ticket from '../(components)/TicketCard';
 
 const SearchPage = () => {
   const [tickets, setTickets] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
 
   const searchTickets = async (query) => {
@@ -20,7 +20,7 @@ const SearchPage = () => {
       const data = await res.json();
       setTickets(data.tickets);
     } catch (error) {
-      console.error("Error searching tickets:", error);
+      console.error('Error searching tickets:', error);
     } finally {
       setLoading(false);
     }
@@ -32,9 +32,9 @@ const SearchPage = () => {
     searchTickets(query);
   };
 
-  const messageContainerClass = "flex justify-center py-5 min-h-[4rem]";
-  const visibleClass = "opacity-100";
-  const hiddenClass = "opacity-0 pointer-events-none";
+  const messageContainerClass = 'flex justify-center py-5 min-h-[4rem]';
+  const visibleClass = 'opacity-100';
+  const hiddenClass = 'opacity-0 pointer-events-none';
 
   return (
     <div className="p-5">
@@ -51,12 +51,14 @@ const SearchPage = () => {
       <div className={messageContainerClass}>
         <p
           className={
-            loading || (!loading && tickets.length === 0 && searchQuery)
-              ? visibleClass
-              : hiddenClass
+            loading || (!loading && searchQuery) ? visibleClass : hiddenClass
           }
         >
-          {loading ? "Loading..." : "No tickets found."}
+          {loading
+            ? 'Loading...'
+            : tickets.length > 0
+            ? `${tickets.length} ticket${tickets.length > 1 ? 's' : ''} found.`
+            : 'No tickets found.'}
         </p>
       </div>
       {searchQuery && tickets.length > 0 && (

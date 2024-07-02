@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const TicketForm = ({ ticket }) => {
-  const EDIT_MODE = ticket._id === "new" ? false : true;
+  const EDIT_MODE = ticket._id !== 'new';
   const router = useRouter();
   const startingTicketData = {
-    title: "",
-    description: "",
+    title: '',
+    description: '',
     priority: 1,
     progress: 0,
-    status: "todo",
-    category: "task",
+    status: 'todo',
+    category: 'task',
   };
 
   const [formData, setFormData] = useState(
@@ -21,10 +21,33 @@ const TicketForm = ({ ticket }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: name === "priority" ? parseInt(value) : value,
-    }));
+    let newFormData = {
+      ...formData,
+      [name]:
+        name === 'priority' || name === 'progress' ? parseInt(value) : value,
+    };
+
+    if (name === 'progress') {
+      if (parseInt(value) === 100) {
+        newFormData.status = 'done';
+      } else if (parseInt(value) === 0) {
+        newFormData.status = 'todo';
+      } else {
+        newFormData.status = 'in_progress';
+      }
+    }
+
+    if (name === 'status') {
+      if (value === 'done') {
+        newFormData.progress = 100;
+      } else if (value === 'todo') {
+        newFormData.progress = 0;
+      } else if (value === 'in_progress') {
+        newFormData.progress = 50;
+      }
+    }
+
+    setFormData(newFormData);
   };
 
   const handleSubmit = async (e) => {
@@ -32,31 +55,36 @@ const TicketForm = ({ ticket }) => {
 
     if (EDIT_MODE) {
       const res = await fetch(`/api/Tickets/${ticket._id}`, {
-        method: "PUT",
+        method: 'PUT',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ formData }),
       });
 
       if (!res.ok) {
-        throw new Error("Failed to update ticket.");
+        throw new Error('Failed to update ticket.');
       }
+
+      alert('Ticket updated.'); // Feedback message
     } else {
-      const res = await fetch("/api/Tickets", {
-        method: "POST",
+      const res = await fetch('/api/Tickets', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ formData }),
       });
 
       if (!res.ok) {
-        throw new Error("Failed to create ticket.");
+        throw new Error('Failed to create ticket.');
       }
+
+      alert('Ticket created.'); // Feedback message
     }
+
     router.refresh();
-    router.push("/");
+    router.push('/');
   };
 
   return (
@@ -67,7 +95,7 @@ const TicketForm = ({ ticket }) => {
         onSubmit={handleSubmit}
       >
         <h1 className="text-center mb-5">
-          {EDIT_MODE ? "Update a ticket" : "Create a new ticket"}
+          {EDIT_MODE ? 'Update a ticket' : 'Create a new ticket'}
         </h1>
         <label>Title</label>
         <input
@@ -95,9 +123,9 @@ const TicketForm = ({ ticket }) => {
           value={formData.category}
           onChange={handleChange}
         >
+          <option value="task">Task</option>
           <option value="bug">Bug</option>
           <option value="user_story">User story</option>
-          <option value="task">Task</option>
         </select>
 
         <label>Priority</label>
@@ -109,7 +137,7 @@ const TicketForm = ({ ticket }) => {
               type="radio"
               value="1"
               onChange={handleChange}
-              checked={formData.priority == 1}
+              checked={formData.priority === 1}
             />
             <label htmlFor="priority-low">Low</label>
           </div>
@@ -121,7 +149,7 @@ const TicketForm = ({ ticket }) => {
               type="radio"
               value="2"
               onChange={handleChange}
-              checked={formData.priority == 2}
+              checked={formData.priority === 2}
             />
             <label htmlFor="priority-medium">Medium</label>
           </div>
@@ -133,7 +161,7 @@ const TicketForm = ({ ticket }) => {
               type="radio"
               value="3"
               onChange={handleChange}
-              checked={formData.priority == 3}
+              checked={formData.priority === 3}
             />
             <label htmlFor="priority-high">High</label>
           </div>
@@ -145,7 +173,7 @@ const TicketForm = ({ ticket }) => {
               type="radio"
               value="4"
               onChange={handleChange}
-              checked={formData.priority == 4}
+              checked={formData.priority === 4}
             />
             <label htmlFor="priority-very-high">Very high</label>
           </div>
@@ -173,7 +201,7 @@ const TicketForm = ({ ticket }) => {
           type="submit"
           className="w-3/4 py-4 px-4 mt-10 bg-cyan-800 hover:bg-stone-600 text-white font-bold mx-auto rounded"
         >
-          {EDIT_MODE ? "Update ticket" : "Create new ticket"}
+          {EDIT_MODE ? 'Update ticket' : 'Create new ticket'}
         </button>
       </form>
     </div>
