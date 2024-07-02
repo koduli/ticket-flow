@@ -1,0 +1,107 @@
+import Ticket from '@/app/(models)/Ticket';
+import mongoose from 'mongoose';
+
+export async function createTicket(ticketData) {
+  const session = await mongoose.startSession();
+  session.startTransaction();
+  try {
+    const newTicket = new Ticket(ticketData);
+    await newTicket.save({ session });
+    await session.commitTransaction();
+    return newTicket;
+  } catch (error) {
+    await session.abortTransaction();
+    throw error;
+  } finally {
+    session.endSession();
+  }
+}
+
+export async function getAllTickets() {
+  return Ticket.find();
+}
+
+export async function getTicketById(id) {
+  return Ticket.findById(id);
+}
+
+export async function updateTicket(id, ticketData) {
+  const session = await mongoose.startSession();
+  session.startTransaction();
+  try {
+    const updatedTicket = await Ticket.findByIdAndUpdate(id, ticketData, {
+      new: true,
+      session,
+    });
+    await session.commitTransaction();
+    return updatedTicket;
+  } catch (error) {
+    await session.abortTransaction();
+    throw error;
+  } finally {
+    session.endSession();
+  }
+}
+
+export async function deleteTicket(id) {
+  const session = await mongoose.startSession();
+  session.startTransaction();
+  try {
+    await Ticket.findByIdAndDelete(id, { session });
+    await session.commitTransaction();
+  } catch (error) {
+    await session.abortTransaction();
+    throw error;
+  } finally {
+    session.endSession();
+  }
+}
+
+export async function searchTickets(query) {
+  return Ticket.find({
+    $or: [
+      { title: { $regex: query, $options: 'i' } },
+      { description: { $regex: query, $options: 'i' } },
+    ],
+  });
+}
+
+export async function getAnalysisData() {
+  const tickets = await Ticket.find();
+
+  const totalItems = tickets.length;
+  const taskCount = tickets.filter(
+    (ticket) => ticket.category === 'task'
+  ).length;
+  const bugCount = tickets.filter((ticket) => ticket.category === 'bug').length;
+  const userStoryCount = tickets.filter(
+    (ticket) => ticket.category === 'user_story'
+  ).length;
+  const completedTickets = tickets.filter(
+    (ticket) => ticket.status === 'done'
+  ).length;
+  const percentageComplete = totalItems
+    ? (completedTickets / totalItems) * 100
+    : 0;
+  const averagePriority = totalItems
+    ? (
+        tickets.reduce((sum, ticket) => sum + ticket.priority, 0) / totalItems
+      ).toFixed(2)
+    : 0;
+
+  const last24Hours = new Date();
+  last24Hours.setDate(last24Hours.getDate() - 1);
+  const ticketsLast24Hours = tickets.filter(
+    (ticket) => new Date(ticket.createdAt) > last24Hours
+  ).length;
+
+  return {
+    totalItems,
+    taskCount,
+    bugCount,
+    userStoryCount,
+    percentageComplete,
+    averagePriority,
+    ticketsLast24Hours,
+  };
+}

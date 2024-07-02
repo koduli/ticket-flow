@@ -1,11 +1,14 @@
-import Ticket from '@/app/(models)/Ticket';
 import { NextResponse } from 'next/server';
-import mongoose from 'mongoose';
+import {
+  getTicketById,
+  updateTicket,
+  deleteTicket,
+} from '@/app/api/db/queries';
 
 export async function GET(req, { params }) {
   try {
     const { id } = params;
-    const foundTicket = await Ticket.findOne({ _id: id });
+    const foundTicket = await getTicketById(id);
     return new NextResponse(JSON.stringify({ foundTicket }), { status: 200 });
   } catch (error) {
     return new NextResponse(
@@ -25,22 +28,10 @@ export async function DELETE(req, { params }) {
       });
     }
 
-    const session = await mongoose.startSession();
-    session.startTransaction();
-    try {
-      await Ticket.findByIdAndDelete(id, { session });
-      await session.commitTransaction();
-      return new NextResponse(JSON.stringify({ message: 'Ticket Deleted' }), {
-        status: 200,
-      });
-    } catch (error) {
-      await session.abortTransaction();
-      return new NextResponse(JSON.stringify({ message: 'Error', error }), {
-        status: 500,
-      });
-    } finally {
-      session.endSession();
-    }
+    await deleteTicket(id);
+    return new NextResponse(JSON.stringify({ message: 'Ticket Deleted' }), {
+      status: 200,
+    });
   } catch (error) {
     console.error(error);
     return new NextResponse(JSON.stringify({ message: 'Error', error }), {
@@ -60,22 +51,10 @@ export async function PUT(req, { params }) {
       });
     }
 
-    const session = await mongoose.startSession();
-    session.startTransaction();
-    try {
-      await Ticket.findByIdAndUpdate(id, formData, { session });
-      await session.commitTransaction();
-      return new NextResponse(JSON.stringify({ message: 'Ticket Updated' }), {
-        status: 200,
-      });
-    } catch (error) {
-      await session.abortTransaction();
-      return new NextResponse(JSON.stringify({ message: 'Error', error }), {
-        status: 500,
-      });
-    } finally {
-      session.endSession();
-    }
+    const updatedTicket = await updateTicket(id, formData);
+    return new NextResponse(JSON.stringify({ message: 'Ticket Updated' }), {
+      status: 200,
+    });
   } catch (error) {
     console.error(error);
     return new NextResponse(JSON.stringify({ message: 'Error', error }), {
