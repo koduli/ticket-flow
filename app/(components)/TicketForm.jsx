@@ -94,7 +94,7 @@ const TicketForm = ({ ticket }) => {
         method="post"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-center mb-5">
+        <h1 className="text-4xl text-center mb-10 text-white">
           {EDIT_MODE ? 'Update a ticket' : 'Create a new ticket'}
         </h1>
         <label>Title</label>
