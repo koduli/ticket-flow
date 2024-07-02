@@ -1,7 +1,6 @@
 import Delete from './Delete';
 import Priority from './Priority';
 import Progress from './Progress';
-import Status from './Status';
 import Link from 'next/link';
 import { FaBug } from 'react-icons/fa'; // Import the bug icon
 import { RiTaskLine } from 'react-icons/ri'; // Import the task icon
