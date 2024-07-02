@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { searchTickets } from '@/app/api/db/queries';
+import { searchTickets } from '@/app/api/database/queries';
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);

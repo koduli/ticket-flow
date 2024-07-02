@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createTicket, getAllTickets } from '@/app/api/db/queries';
+import { createTicket, getAllTickets } from '@/app/api/database/queries';
 
 export async function POST(req) {
   try {

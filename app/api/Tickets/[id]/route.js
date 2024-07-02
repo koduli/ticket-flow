@@ -3,7 +3,7 @@ import {
   getTicketById,
   updateTicket,
   deleteTicket,
-} from '@/app/api/db/queries';
+} from '@/app/api/database/queries';
 
 export async function GET(req, { params }) {
   try {

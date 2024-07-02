@@ -65,7 +65,7 @@ const TicketForm = ({ ticket }) => {
 
     try {
       if (EDIT_MODE) {
-        const res = await fetch(`/api/Tickets/${ticket._id}`, {
+        const res = await fetch(`/api/tickets/${ticket._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const TicketForm = ({ ticket }) => {
 
         alert('Ticket updated.'); // Feedback message
       } else {
-        const res = await fetch('/api/Tickets', {
+        const res = await fetch('/api/tickets', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

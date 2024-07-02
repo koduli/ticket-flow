@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   const fetchTickets = async () => {
     try {
-      const res = await fetch('/api/Tickets');
+      const res = await fetch('/api/tickets');
       const data = await res.json();
       setTickets(data.tickets);
     } catch (error) {
