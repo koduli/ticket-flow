@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { faX } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter } from "next/navigation";
+import { faX } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRouter } from 'next/navigation';
 
 const Delete = ({ id, fetchTickets }) => {
   const router = useRouter();
 
   const deleteTicket = async () => {
-    const res = await fetch(`/api/Tickets/${id}`, {
-      method: "DELETE",
+    const res = await fetch(`/api/tickets/${id}`, {
+      method: 'DELETE',
     });
     if (res.ok) {
       fetchTickets();
     } else {
-      console.error("Failed to delete ticket");
+      console.error('Failed to delete ticket');
     }
   };
 

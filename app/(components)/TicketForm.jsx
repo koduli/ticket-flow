@@ -18,6 +18,9 @@ const TicketForm = ({ ticket }) => {
   const [formData, setFormData] = useState(
     EDIT_MODE ? ticket : startingTicketData
   );
+  const [initialData] = useState(EDIT_MODE ? ticket : startingTicketData);
+  const [noChangesMessage, setNoChangesMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,43 +51,54 @@ const TicketForm = ({ ticket }) => {
     }
 
     setFormData(newFormData);
+    setNoChangesMessage(''); // Reset message on change
+    setErrorMessage(''); // Reset error message on change
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (EDIT_MODE) {
-      const res = await fetch(`/api/Tickets/${ticket._id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ formData }),
-      });
-
-      if (!res.ok) {
-        throw new Error('Failed to update ticket.');
-      }
-
-      alert('Ticket updated.'); // Feedback message
-    } else {
-      const res = await fetch('/api/Tickets', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ formData }),
-      });
-
-      if (!res.ok) {
-        throw new Error('Failed to create ticket.');
-      }
-
-      alert('Ticket created.'); // Feedback message
+    if (EDIT_MODE && JSON.stringify(formData) === JSON.stringify(initialData)) {
+      setNoChangesMessage('No changes made.');
+      return;
     }
 
-    router.refresh();
-    router.push('/');
+    try {
+      if (EDIT_MODE) {
+        const res = await fetch(`/api/tickets/${ticket._id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ formData }),
+        });
+
+        if (!res.ok) {
+          throw new Error('Failed to update ticket.');
+        }
+
+        alert('Ticket updated.'); // Feedback message
+      } else {
+        const res = await fetch('/api/tickets', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ formData }),
+        });
+
+        if (!res.ok) {
+          throw new Error('Failed to create ticket.');
+        }
+
+        alert('Ticket created.'); // Feedback message
+      }
+
+      router.refresh();
+      router.push('/board');
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
 
   return (
@@ -94,7 +108,7 @@ const TicketForm = ({ ticket }) => {
         method="post"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-center mb-5">
+        <h1 className="text-4xl text-center mb-10 text-white">
           {EDIT_MODE ? 'Update a ticket' : 'Create a new ticket'}
         </h1>
         <label>Title</label>
@@ -197,6 +211,12 @@ const TicketForm = ({ ticket }) => {
           <option value="done">Done</option>
         </select>
 
+        {noChangesMessage && (
+          <p className="text-red-500 text-center">{noChangesMessage}</p>
+        )}
+        {errorMessage && (
+          <p className="text-red-500 text-center">{errorMessage}</p>
+        )}
         <button
           type="submit"
           className="w-3/4 py-4 px-4 mt-10 bg-cyan-800 hover:bg-stone-600 text-white font-bold mx-auto rounded"

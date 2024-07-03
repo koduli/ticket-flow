@@ -1,7 +1,6 @@
 import Delete from './Delete';
 import Priority from './Priority';
 import Progress from './Progress';
-import Status from './Status';
 import Link from 'next/link';
 import { FaBug } from 'react-icons/fa'; // Import the bug icon
 import { RiTaskLine } from 'react-icons/ri'; // Import the task icon
@@ -72,7 +71,7 @@ const Ticket = ({
         </div>
         <Delete id={_id} fetchTickets={fetchTickets} />
       </div>
-      <Link href={`Item/${_id}`} style={{ display: 'contents' }}>
+      <Link href={`ticket/${_id}`} style={{ display: 'contents' }}>
         <h4>{title}</h4>
         <hr className="h-1 border-0 bg-gray-300 mb-2 rounded" />
         <p className="whitespace-pre-wrap">{description}</p>

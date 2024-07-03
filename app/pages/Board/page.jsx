@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Ticket from './(components)/TicketCard';
+import Ticket from '../../(components)/TicketCard';
 import Head from 'next/head';
 
 const Dashboard = () => {
@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   const fetchTickets = async () => {
     try {
-      const res = await fetch('/api/Tickets');
+      const res = await fetch('/api/tickets');
       const data = await res.json();
       setTickets(data.tickets);
     } catch (error) {
@@ -38,7 +38,8 @@ const Dashboard = () => {
         <title>Board</title>
       </Head>
       <div className="padding-5">
-        <h1 className="text-center text-4xl mb-5">Board</h1> {/* Page Title */}
+        <h1 className="text-4xl text-center text-white mb-4 mt-5">Board</h1>{' '}
+        {/* Page Title */}
         <div className="lg:grid grid-cols-1 xl:grid-cols-3 gap-10">
           {statuses.map((status, index) => (
             <div key={index} className="mb-4">

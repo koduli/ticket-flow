@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Ticket from '../(components)/TicketCard';
+import Ticket from '../../(components)/TicketCard';
 
 const SearchPage = () => {
   const [tickets, setTickets] = useState([]);
@@ -38,7 +38,9 @@ const SearchPage = () => {
 
   return (
     <div className="p-5">
-      <h1 className="text-center mb-5">Search for a ticket</h1>
+      <h1 className="text-4xl text-center mb-14 text-white">
+        Search for a ticket
+      </h1>
       <div className="flex justify-center">
         <input
           type="text"
