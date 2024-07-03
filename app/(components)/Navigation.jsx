@@ -21,13 +21,13 @@ const Navigation = () => {
     >
       <div className="flex space-x-12">
         {/* Grouping left items */}
-        <Link href="/" legacyBehavior>
+        <Link href="/Board" legacyBehavior>
           <a className="flex items-center space-x-2">
             <FaRegClipboard
-              className={`icon ${getLinkClass('/')}`}
+              className={`icon ${getLinkClass('/Board')}`}
               style={{ fontSize: '1.5rem' }}
             />
-            <span className={getLinkClass('/')}>Board</span>
+            <span className={getLinkClass('/Board')}>Board</span>
           </a>
         </Link>
         <Link href="/Item/new" legacyBehavior>

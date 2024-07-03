@@ -95,7 +95,7 @@ const TicketForm = ({ ticket }) => {
       }
 
       router.refresh();
-      router.push('/');
+      router.push('/Board');
     } catch (error) {
       setErrorMessage(error.message);
     }
