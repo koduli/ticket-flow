@@ -1,6 +1,6 @@
 # Ticket Flow
 
-## User Stories
+## 1. User Stories
 
 ### Benutzerstory 1: Ticket erstellen
 
@@ -56,3 +56,25 @@
 - Die Analyse-Seite sollte Metriken wie die Gesamtanzahl der Tickets, die Anzahl der Aufgaben, die Anzahl der Bugs, die Anzahl der User Stories, den Prozentsatz der Board-Fertigstellung, die durchschnittliche Priorität und die Anzahl der in den letzten 24 Stunden erstellten Tickets anzeigen.
 - Jede Metrik sollte in einem klaren und leicht lesbaren Format dargestellt werden.
 - Der Benutzer sollte von der Hauptnavigationsleiste auf die Analyse-Seite zugreifen können.
+
+## 2. Komponentendiagramm
+
+![Komponentendiagramm](public/componentdiagram-tf.png)
+
+### Client-seitig:
+
+- Die Navigation-Komponente verwaltet Links zu verschiedenen Seiten.
+- Die Dashboard-Komponente zeigt Tickets auf dem Board an und verwendet dabei die TicketCard-Komponente.
+- Die TicketForm-Komponente wird zum Erstellen und Aktualisieren von Tickets verwendet.
+- Die SearchPage-Komponente ermöglicht die Suche nach Tickets.
+- Die AnalysisPage-Komponente zeigt Analysen zu den Tickets an.
+
+### API-Endpunkte:
+
+- **Tickets API**: Verwaltet CRUD-Operationen für Tickets.
+- **Search API**: Verwaltet die Suche nach Tickets.
+- **Analysis API**: Stellt Analysedaten zu den Tickets bereit.
+
+### Datenbank:
+
+- **MongoDB mit Ticket-Schema**: Speichert Ticketinformationen wie Titel, Beschreibung, Priorität, Status usw.
