@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Ticket from './(components)/TicketCard';
+import Ticket from '../(components)/TicketCard';
 import Head from 'next/head';
 
 const Dashboard = () => {

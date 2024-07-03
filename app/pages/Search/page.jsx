@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Ticket from '../(components)/TicketCard';
+import Ticket from '../../(components)/TicketCard';
 
 const SearchPage = () => {
   const [tickets, setTickets] = useState([]);
