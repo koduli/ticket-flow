@@ -21,40 +21,40 @@ const Navigation = () => {
     >
       <div className="flex space-x-12">
         {/* Grouping left items */}
-        <Link href="/pages" legacyBehavior>
+        <Link href="/" legacyBehavior>
           <a className="flex items-center space-x-2">
             <FaRegClipboard
-              className={`icon ${getLinkClass('/pages')}`}
+              className={`icon ${getLinkClass('/')}`}
               style={{ fontSize: '1.5rem' }}
             />
-            <span className={getLinkClass('/pages')}>Board</span>
+            <span className={getLinkClass('/')}>Board</span>
           </a>
         </Link>
-        <Link href="/pages/Item/new" legacyBehavior>
+        <Link href="/Item/new" legacyBehavior>
           <a className="flex items-center space-x-2">
             <ImTicket
-              className={`icon ${getLinkClass('/pages/Item/new')}`}
+              className={`icon ${getLinkClass('/Item/new')}`}
               style={{ fontSize: '1.5rem' }}
             />
-            <span className={getLinkClass('/pages/Item/new')}>New ticket</span>
+            <span className={getLinkClass('/Item/new')}>New ticket</span>
           </a>
         </Link>
-        <Link href="/pages/Search" legacyBehavior>
+        <Link href="/Search" legacyBehavior>
           <a className="flex items-center space-x-2">
             <IoSearchSharp
-              className={`icon ${getLinkClass('/pages/Search')}`}
+              className={`icon ${getLinkClass('/Search')}`}
               style={{ fontSize: '1.5rem' }}
             />
-            <span className={getLinkClass('/pages/Search')}>Search</span>
+            <span className={getLinkClass('/Search')}>Search</span>
           </a>
         </Link>
-        <Link href="/pages/Analysis" legacyBehavior>
+        <Link href="/Analysis" legacyBehavior>
           <a className="flex items-center space-x-2">
             <TbBrandGoogleAnalytics
-              className={`icon ${getLinkClass('/pages/Analysis')}`}
+              className={`icon ${getLinkClass('/Analysis')}`}
               style={{ fontSize: '1.5rem' }}
             />
-            <span className={getLinkClass('/pages/Analysis')}>Analysis</span>
+            <span className={getLinkClass('/Analysis')}>Analysis</span>
           </a>
         </Link>
       </div>
