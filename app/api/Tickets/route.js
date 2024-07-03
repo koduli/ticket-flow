@@ -22,7 +22,7 @@ export async function POST(req) {
 export async function GET() {
   try {
     const tickets = await getAllTickets();
-    return NextResponse.json({ tickets });
+    return NextResponse.json({ tickets }, { status: 200 });
   } catch (error) {
     console.error('Error fetching tickets:', error);
     return NextResponse.json(

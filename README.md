@@ -108,3 +108,14 @@ Für dieses Projekt sollen die folgenden Arbeitsmittel und Programmiersprachen e
 - **MongoDB mit Ticket-Schema**: Speichert Ticketinformationen wie Titel, Beschreibung, Priorität, Status usw.
 
 ## 4. Projektbeschreibung
+
+Das Projekt "Ticket Flow" zielt darauf ab, eine webbasierte Anwendung zur Verwaltung von IT-Tickets bereitzustellen. Diese Anwendung ermöglicht es Nutzern, Tickets zu erstellen, zu aktualisieren, nach ihnen zu suchen und Analysen darüber durchzuführen.
+
+### Funktionen
+
+Die entwickelte Webanwendung bietet Nutzern folgende Möglichkeiten:
+
+- Tickets zu erstellen und zu aktualisieren.
+- Nach Tickets zu suchen.
+- Analysen über die Tickets durchzuführen.
+- Ein übersichtliches Dashboard anzuzeigen, das Tickets je nach ihrem Status in verschiedenen Spalten darstellt.
