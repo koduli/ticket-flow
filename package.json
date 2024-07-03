@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "run-p dev:next open",
     "dev:next": "next dev",
-    "open": "open-cli http://localhost:3000/Board",
+    "open": "open-cli http://localhost:3000/board",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

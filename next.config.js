@@ -3,24 +3,24 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/Board',
-        destination: '/pages/Board',
+        source: '/board',
+        destination: '/pages/board',
       },
       {
-        source: '/Item/new',
-        destination: '/pages/Item/new',
+        source: '/ticket/new',
+        destination: '/pages/ticket/new',
       },
       {
-        source: '/Item/:id',
-        destination: '/pages/Item/:id',
+        source: '/ticket/:id',
+        destination: '/pages/ticket/:id',
       },
       {
-        source: '/Search',
-        destination: '/pages/Search',
+        source: '/search',
+        destination: '/pages/search',
       },
       {
-        source: '/Analysis',
-        destination: '/pages/Analysis',
+        source: '/analysis',
+        destination: '/pages/analysis',
       },
     ];
   },

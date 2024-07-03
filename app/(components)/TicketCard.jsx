@@ -71,7 +71,7 @@ const Ticket = ({
         </div>
         <Delete id={_id} fetchTickets={fetchTickets} />
       </div>
-      <Link href={`Item/${_id}`} style={{ display: 'contents' }}>
+      <Link href={`ticket/${_id}`} style={{ display: 'contents' }}>
         <h4>{title}</h4>
         <hr className="h-1 border-0 bg-gray-300 mb-2 rounded" />
         <p className="whitespace-pre-wrap">{description}</p>
