@@ -119,3 +119,10 @@ Die entwickelte Webanwendung bietet Nutzern folgende Möglichkeiten:
 - Nach Tickets zu suchen.
 - Analysen über die Tickets durchzuführen.
 - Ein übersichtliches Dashboard anzuzeigen, das Tickets je nach ihrem Status in verschiedenen Spalten darstellt.
+
+### Applikation im Browser
+
+![Board-page](public/pages_overview/board-page.png)
+![New-Ticket-page](public/pages_overview/new-ticket-page.png)
+![Search-page](public/pages_overview/search-page.png)
+![Analysis-page](public/pages_overview/analysis-page.png)
