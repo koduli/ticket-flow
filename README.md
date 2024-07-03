@@ -1,6 +1,34 @@
 # Ticket Flow
 
-## 1. User Stories
+## 1. Projektauftrag
+
+### Ziel
+
+Das Ziel dieses Projekts ist es, eine webbasierte Anwendung zu entwickeln, die das Management von IT-Tickets ermöglicht. Diese Anwendung soll Funktionen zur Erstellung, Aktualisierung, Suche und Analyse von Tickets bieten. Die Ergebnisse dieses Projekts umfassen eine funktionale Webanwendung, die ein intuitives Dashboard, eine Ticket-Formularseite, eine Suchseite und eine Analyseseite beinhaltet. Die Anwendung wird eine MongoDB-Datenbank verwenden, um Ticketdaten zu speichern und zu verwalten.
+
+### Projektauftrag
+
+Im Rahmen dieses Projekts soll eine Webanwendung entwickelt werden, die es Nutzern ermöglicht, Tickets zu erstellen und zu aktualisieren, nach Tickets zu suchen und Analysen über die Tickets zu betrachten. Die Anwendung soll ein benutzerfreundliches Interface und robuste Backend-APIs bieten, um eine effiziente Ticketverwaltung zu gewährleisten. Die Hauptfunktionen umfassen die Anzeige von Tickets in einem übersichtlichen Dashboard, die Möglichkeit zur detaillierten Suche nach spezifischen Tickets und die Bereitstellung von Analysewerkzeugen zur Auswertung der Ticketdaten. Die Anwendung wird auf einer modernen Technologie-Stack aufgebaut, einschliesslich React für das Frontend, Next.js für das Server-Side Rendering und Routing, sowie MongoDB für die Datenbankverwaltung. Durch die Verwendung von Tailwind CSS soll eine ansprechende und responsive Benutzeroberfläche sichergestellt werden.
+
+### Erwartete Schwierigkeiten
+
+Probleme können bei der Implementierung der API-Endpunkte und der Datenbankinteraktionen auftreten. Unsicherheiten bestehen in der Handhabung von Transaktionen und Rollbacks bei fehlgeschlagenen Datenbankoperationen. Die kompliziertesten Arbeiten umfassen die Synchronisation der Client-seitigen und Server-seitigen Zustände sowie die effiziente Umsetzung der Such- und Analysefunktionen.
+
+### Techniken, Frameworks und Tools
+
+Für dieses Projekt sollen die folgenden Arbeitsmittel und Programmiersprachen eingesetzt werden:
+
+- **Frontend**: React, Next.js
+- **Backend**: Node.js (Laufzeitumgebung, auf der Next.js ausgeführt wird), Next.js (Framework, das das Routing, die serverseitige Logik und die API-Routen verwaltet)
+- **Datenbank**: MongoDB, Mongoose
+- **Styling**: Tailwind CSS
+- **Tools**: npm (Abhängigkeiten zu verwalten und Pakete zu installieren), open-cli (URL direkt aus dem Terminal zu öffnen), npm-run-all (mehrere npm-Skripte parallel oder nacheinander auszuführen)
+
+### Bemerkungen
+
+- **Links**: [Next.js Dokumentation](https://nextjs.org/docs), [MongoDB Dokumentation](https://docs.mongodb.com/), [React Dokumentation] (https://react.dev/reference/react)
+
+## 2. User Stories
 
 ### Benutzerstory 1: Ticket erstellen
 
@@ -57,7 +85,7 @@
 - Jede Metrik sollte in einem klaren und leicht lesbaren Format dargestellt werden.
 - Der Benutzer sollte von der Hauptnavigationsleiste auf die Analyse-Seite zugreifen können.
 
-## 2. Komponentendiagramm
+## 3. Komponentendiagramm
 
 ![Komponentendiagramm](public/componentdiagram-tf.png)
 
