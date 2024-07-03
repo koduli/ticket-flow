@@ -26,7 +26,7 @@ Für dieses Projekt sollen die folgenden Arbeitsmittel und Programmiersprachen e
 
 ### Bemerkungen
 
-- **Links**: [Next.js Dokumentation](https://nextjs.org/docs), [MongoDB Dokumentation](https://docs.mongodb.com/), [React Dokumentation] (https://react.dev/reference/react)
+- **Links**: [Next.js Dokumentation](https://nextjs.org/docs), [MongoDB Dokumentation](https://docs.mongodb.com/), [React Dokumentation](https://react.dev/reference/react)
 
 ## 2. User Stories
 
@@ -106,3 +106,5 @@ Für dieses Projekt sollen die folgenden Arbeitsmittel und Programmiersprachen e
 ### Datenbank:
 
 - **MongoDB mit Ticket-Schema**: Speichert Ticketinformationen wie Titel, Beschreibung, Priorität, Status usw.
+
+## 4. Projektbeschreibung
