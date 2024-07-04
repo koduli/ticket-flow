@@ -92,37 +92,80 @@ export async function searchTickets(query) {
   }
 }
 
-export async function getAnalysisData() {
+async function getTotalItems(tickets) {
   try {
-    const tickets = await Ticket.find();
+    return tickets.length;
+  } catch (error) {
+    throw new Error(`Failed to get total items: ${error.message}`);
+  }
+}
 
+async function getCountByCategory(tickets, category) {
+  try {
+    return tickets.filter((ticket) => ticket.category === category).length;
+  } catch (error) {
+    throw new Error(`Failed to get count by category: ${error.message}`);
+  }
+}
+
+async function getCompletedTickets(tickets) {
+  try {
+    return tickets.filter((ticket) => ticket.status === 'done').length;
+  } catch (error) {
+    throw new Error(`Failed to get completed tickets: ${error.message}`);
+  }
+}
+
+async function getPercentageComplete(tickets, completedTickets) {
+  try {
     const totalItems = tickets.length;
-    const taskCount = tickets.filter(
-      (ticket) => ticket.category === 'task'
-    ).length;
-    const bugCount = tickets.filter(
-      (ticket) => ticket.category === 'bug'
-    ).length;
-    const userStoryCount = tickets.filter(
-      (ticket) => ticket.category === 'user_story'
-    ).length;
-    const completedTickets = tickets.filter(
-      (ticket) => ticket.status === 'done'
-    ).length;
-    const percentageComplete = totalItems
-      ? (completedTickets / totalItems) * 100
-      : 0;
-    const averagePriority = totalItems
+    return totalItems ? (completedTickets / totalItems) * 100 : 0;
+  } catch (error) {
+    throw new Error(`Failed to get percentage complete: ${error.message}`);
+  }
+}
+
+async function getAveragePriority(tickets) {
+  try {
+    const totalItems = tickets.length;
+    return totalItems
       ? (
           tickets.reduce((sum, ticket) => sum + ticket.priority, 0) / totalItems
         ).toFixed(2)
       : 0;
+  } catch (error) {
+    throw new Error(`Failed to get average priority: ${error.message}`);
+  }
+}
 
+async function getTicketsLast24Hours(tickets) {
+  try {
     const last24Hours = new Date();
     last24Hours.setDate(last24Hours.getDate() - 1);
-    const ticketsLast24Hours = tickets.filter(
-      (ticket) => new Date(ticket.createdAt) > last24Hours
-    ).length;
+    return tickets.filter((ticket) => new Date(ticket.createdAt) > last24Hours)
+      .length;
+  } catch (error) {
+    throw new Error(
+      `Failed to get tickets from the last 24 hours: ${error.message}`
+    );
+  }
+}
+
+export async function getAnalysisData() {
+  try {
+    const tickets = await Ticket.find();
+
+    const totalItems = await getTotalItems(tickets);
+    const taskCount = await getCountByCategory(tickets, 'task');
+    const bugCount = await getCountByCategory(tickets, 'bug');
+    const userStoryCount = await getCountByCategory(tickets, 'user_story');
+    const completedTickets = await getCompletedTickets(tickets);
+    const percentageComplete = await getPercentageComplete(
+      tickets,
+      completedTickets
+    );
+    const averagePriority = await getAveragePriority(tickets);
+    const ticketsLast24Hours = await getTicketsLast24Hours(tickets);
 
     return {
       totalItems,
