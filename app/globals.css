@@ -58,7 +58,7 @@
 
   .custom-table th,
   .custom-table td {
-    @apply border border-white text-white px-14 py-3; /* Default values */
+    @apply border border-white text-white px-14 py-3;
   }
 
   .custom-table {

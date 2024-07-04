@@ -57,7 +57,7 @@ const TicketForm = ({ ticket }) => {
     }
 
     setFormData(newFormData);
-    setNoChangesMessage(''); // Reset message on change
+    setNoChangesMessage('');
   };
 
   const handleSubmit = async (e) => {
@@ -89,7 +89,7 @@ const TicketForm = ({ ticket }) => {
           throw new Error('Failed to update ticket.');
         }
 
-        alert('Ticket updated.'); // Feedback message
+        alert('Ticket updated.');
       } else {
         const res = await fetch('/api/tickets', {
           method: 'POST',
@@ -103,7 +103,7 @@ const TicketForm = ({ ticket }) => {
           throw new Error('Failed to create ticket.');
         }
 
-        alert('Ticket created.'); // Feedback message
+        alert('Ticket created.');
       }
 
       router.refresh();

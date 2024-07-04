@@ -2,9 +2,9 @@ import Delete from './Delete';
 import Priority from './Priority';
 import Progress from './Progress';
 import Link from 'next/link';
-import { FaBug } from 'react-icons/fa'; // Import the bug icon
-import { RiTaskLine } from 'react-icons/ri'; // Import the task icon
-import { MdHistoryEdu } from 'react-icons/md'; // Import the user story icon
+import { FaBug } from 'react-icons/fa';
+import { RiTaskLine } from 'react-icons/ri';
+import { MdHistoryEdu } from 'react-icons/md';
 
 const Ticket = ({
   _id,
@@ -14,9 +14,9 @@ const Ticket = ({
   status,
   createdAt,
   progress,
-  category, // Ensure category is passed as a prop
+  category,
   fetchTickets,
-  iconSize = '24px', // Default icon size
+  iconSize = '24px',
 }) => {
   const getStatusBgColor = (status) => {
     switch (status) {
@@ -45,7 +45,7 @@ const Ticket = ({
   };
 
   const getCategoryFlag = (category) => {
-    const className = 'text-lg font-bold text-white'; // Set the desired font size and weight, and color
+    const className = 'text-lg font-bold text-white';
     switch (category) {
       case 'bug':
         return <span className={className}>Bug</span>;
