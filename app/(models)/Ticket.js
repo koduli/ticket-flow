@@ -26,18 +26,4 @@ const ticketSchema = new Schema(
 
 const Ticket = mongoose.models.Ticket || mongoose.model('Ticket', ticketSchema);
 
-async function createTextIndex() {
-  try {
-    await Ticket.collection.createIndex(
-      { title: 'text', description: 'text' },
-      { name: 'TextIndex' }
-    );
-    console.log('Text index created successfully.');
-  } catch (error) {
-    console.error('Error creating text index:', error);
-  }
-}
-
-createTextIndex();
-
 export default Ticket;

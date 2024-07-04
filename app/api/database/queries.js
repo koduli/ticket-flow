@@ -1,6 +1,20 @@
 import Ticket from '@/app/(models)/Ticket';
 import mongoose from 'mongoose';
 
+async function createTextIndex() {
+  try {
+    await Ticket.collection.createIndex(
+      { title: 'text', description: 'text' },
+      { name: 'TextIndex' }
+    );
+    console.log('Text index created successfully.');
+  } catch (error) {
+    console.error('Error creating text index:', error);
+  }
+}
+
+createTextIndex();
+
 export async function createTicket(ticketData) {
   const session = await mongoose.startSession();
   session.startTransaction();
