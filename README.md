@@ -129,3 +129,7 @@ Die entwickelte Webanwendung bietet Nutzern folgende Möglichkeiten:
 ![Search-page](public/pages_overview/search-page.png)
 
 ![Analysis-page](public/pages_overview/analysis-page.png)
+
+### Reporting
+
+![Reporting](public/reporting.png)
