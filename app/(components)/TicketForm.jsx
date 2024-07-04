@@ -30,6 +30,12 @@ const TicketForm = ({ ticket }) => {
         name === 'priority' || name === 'progress' ? parseInt(value) : value,
     };
 
+    if (name === 'title' && value.length > 35) {
+      setErrorMessage('Only 35 characters allowed in the title field.');
+    } else {
+      setErrorMessage('');
+    }
+
     if (name === 'progress') {
       if (parseInt(value) === 100) {
         newFormData.status = 'done';
@@ -52,14 +58,20 @@ const TicketForm = ({ ticket }) => {
 
     setFormData(newFormData);
     setNoChangesMessage(''); // Reset message on change
-    setErrorMessage(''); // Reset error message on change
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (EDIT_MODE && JSON.stringify(formData) === JSON.stringify(initialData)) {
-      setNoChangesMessage('No changes made.');
+      setNoChangesMessage(
+        'No changes made. Make a change to update the ticket.'
+      );
+      return;
+    }
+
+    if (formData.title.length > 35) {
+      setErrorMessage('Only 35 characters allowed in the title field.');
       return;
     }
 
