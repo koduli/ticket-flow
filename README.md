@@ -1,126 +1,33 @@
 # Ticket Flow
 
-## 1. Projektauftrag
+## 1. Project Description
 
-### Ziel
+The "Ticket Flow" project aims to provide a web-based application for managing IT tickets. This application allows users to create, update, search for, and analyze tickets.
 
-Das Ziel dieses Projekts ist es, eine webbasierte Anwendung zu entwickeln, die das Management von IT-Tickets ermöglicht. Diese Anwendung soll Funktionen zur Erstellung, Aktualisierung, Suche und Analyse von Tickets bieten. Die Ergebnisse dieses Projekts umfassen eine funktionale Webanwendung, die ein intuitives Dashboard, eine Ticket-Formularseite, eine Suchseite und eine Analyseseite beinhaltet. Die Anwendung wird eine MongoDB-Datenbank verwenden, um Ticketdaten zu speichern und zu verwalten.
+### Features
 
-### Projektauftrag
+The developed web application offers users the following capabilities:
 
-Im Rahmen dieses Projekts soll eine Webanwendung entwickelt werden, die es Nutzern ermöglicht, Tickets zu erstellen und zu aktualisieren, nach Tickets zu suchen und Analysen über die Tickets zu betrachten. Die Anwendung soll ein benutzerfreundliches Interface und robuste Backend-APIs bieten, um eine effiziente Ticketverwaltung zu gewährleisten. Die Hauptfunktionen umfassen die Anzeige von Tickets in einem übersichtlichen Dashboard, die Möglichkeit zur detaillierten Suche nach spezifischen Tickets und die Bereitstellung von Analysewerkzeugen zur Auswertung der Ticketdaten. Die Anwendung wird auf einer modernen Technologie-Stack aufgebaut, einschliesslich React für das Frontend, Next.js für das Server-Side Rendering und Routing, sowie MongoDB für die Datenbankverwaltung. Durch die Verwendung von Tailwind CSS soll eine ansprechende und responsive Benutzeroberfläche sichergestellt werden.
+- Create and update tickets.
+- Search for tickets.
+- Perform analyses on the tickets.
+- Display a clear dashboard that shows tickets in different columns based on their status.
 
-### Erwartete Schwierigkeiten
+### Techniques, Frameworks, and Tools
 
-Probleme können bei der Implementierung der API-Endpunkte und der Datenbankinteraktionen auftreten. Unsicherheiten bestehen in der Handhabung von Transaktionen und Rollbacks bei fehlgeschlagenen Datenbankoperationen. Die kompliziertesten Arbeiten umfassen die Synchronisation der Client-seitigen und Server-seitigen Zustände sowie die effiziente Umsetzung der Such- und Analysefunktionen.
-
-### Techniken, Frameworks und Tools
-
-Für dieses Projekt sollen die folgenden Arbeitsmittel und Programmiersprachen eingesetzt werden:
+The following tools and programming languages will be used for this project:
 
 - **Frontend**: React, Next.js
-- **Backend**: Node.js (Laufzeitumgebung, auf der Next.js ausgeführt wird), Next.js (Framework, das das Routing, die serverseitige Logik und die API-Routen verwaltet)
-- **Datenbank**: MongoDB, Mongoose
+- **Backend**: Node.js (runtime environment on which Next.js runs), Next.js (framework that manages routing, server-side logic, and API routes)
+- **Database**: MongoDB, Mongoose
 - **Styling**: Tailwind CSS
-- **Tools**: npm (Abhängigkeiten zu verwalten und Pakete zu installieren), open-cli (URL direkt aus dem Terminal zu öffnen), npm-run-all (mehrere npm-Skripte parallel oder nacheinander auszuführen)
+- **Tools**: npm (to manage dependencies and install packages), open-cli (to open URLs directly from the terminal), npm-run-all (to run multiple npm scripts in parallel or sequentially)
 
-### Bemerkungen
+### Remarks
 
-- **Links**: [Next.js Dokumentation](https://nextjs.org/docs), [MongoDB Dokumentation](https://docs.mongodb.com/), [React Dokumentation](https://react.dev/reference/react)
+- **Links**: [Next.js Documentation](https://nextjs.org/docs), [MongoDB Documentation](https://docs.mongodb.com/), [React Documentation](https://react.dev/reference/react)
 
-## 2. User Stories
-
-### Benutzerstory 1: Ticket erstellen
-
-**Beschreibung:** Als ein Benutzer möchte ich ein neues Ticket erstellen damit ich Aufgaben oder Probleme verfolgen kann, die bearbeitet werden müssen.
-
-**Akzeptanzkriterien:**
-
-- Das Formular "Neues Ticket erstellen" sollte Felder für Titel, Beschreibung, Kategorie, Priorität, Fortschritt und Status enthalten.
-- Der Benutzer sollte eine Kategorie aus einer vordefinierten Liste auswählen können (z.B. Aufgabe, User Story).
-- Der Benutzer sollte die Priorität des Tickets festlegen können (Niedrig, Mittel, Hoch, Sehr hoch).
-- Der Benutzer sollte den Fortschritt des Tickets mithilfe eines Schiebereglers einstellen können.
-- Der Benutzer sollte den Status des Tickets festlegen können (Todo, In Bearbeitung, Erledigt).
-- Der Benutzer sollte nach erfolgreicher Ticketerstellung eine Bestätigungsmeldung erhalten.
-
-### Benutzerstory 2: Tickets auf dem Board anzeigen
-
-**Beschreibung:** Als ein Benutzer möchte ich alle Tickets auf einem Board anzeigen lassen damit ich den Status jedes Tickets auf einen Blick sehen kann.
-
-**Akzeptanzkriterien:**
-
-- Das Board sollte drei Spalten haben: Todo, In Bearbeitung und Erledigt.
-- Tickets sollten unter der entsprechenden Spalte basierend auf ihrem Status angezeigt werden.
-- Jedes Ticket sollte den Titel, die Beschreibung, die Priorität, den Fortschritt und das Erstellungsdatum anzeigen.
-- Der Benutzer sollte die Priorität und den Fortschritt jedes Tickets visuell erkennen können.
-
-### Benutzerstory 3: Ticketstatus aktualisieren
-
-**Beschreibung:** Als ein Benutzer möchte ich den Status eines Tickets aktualisieren damit ich den Fortschritt meiner Aufgaben verfolgen kann.
-
-**Akzeptanzkriterien:**
-
-- Der Benutzer sollte auf ein bestehendes Ticket klicken können und zur Seite "Ticket aktualisieren" weitergeleitet werden.
-- Auf der Seite "Ticket aktualisieren" sollte der Benutzer die Ticketdetails neu definieren können.
-- Der Benutzer sollte nach erfolgreicher Aktualisierung des Ticketstatus eine Bestätigungsmeldung erhalten.
-
-### Benutzerstory 4: Nach Tickets suchen
-
-**Beschreibung:** Als ein Benutzer möchte ich nach einem bestimmten Ticket suchen damit ich es schnell finden und seine Details überprüfen kann.
-
-**Akzeptanzkriterien:**
-
-- Der Benutzer sollte einen Suchbegriff in die Suchleiste eingeben können.
-- Die Suchergebnisse sollten Tickets anzeigen, die dem Suchbegriff entsprechen.
-- Jedes Ergebnis sollte den Titel, die Beschreibung und das Erstellungsdatum des Tickets anzeigen.
-- Der Benutzer sollte auf ein Ticket in den Suchergebnissen klicken können, um dessen vollständige Details anzuzeigen.
-
-### Benutzerstory 5: Ticketdaten analysieren
-
-**Beschreibung:** Als ein Benutzer möchte ich die Ticketdaten analysieren damit ich den gesamten Fortschritt und die Leistung verstehen kann.
-
-**Akzeptanzkriterien:**
-
-- Die Analyse-Seite sollte Metriken wie die Gesamtanzahl der Tickets, die Anzahl der Aufgaben, die Anzahl der Bugs, die Anzahl der User Stories, den Prozentsatz der Board-Fertigstellung, die durchschnittliche Priorität und die Anzahl der in den letzten 24 Stunden erstellten Tickets anzeigen.
-- Jede Metrik sollte in einem klaren und leicht lesbaren Format dargestellt werden.
-- Der Benutzer sollte von der Hauptnavigationsleiste auf die Analyse-Seite zugreifen können.
-
-## 3. Komponentendiagramm
-
-![Komponentendiagramm](public/componentdiagram-tf.png)
-
-### Client-seitig:
-
-- Die Navigation-Komponente verwaltet Links zu verschiedenen Seiten.
-- Die Dashboard-Komponente zeigt Tickets auf dem Board an und verwendet dabei die TicketCard-Komponente.
-- Die TicketForm-Komponente wird zum Erstellen und Aktualisieren von Tickets verwendet.
-- Die SearchPage-Komponente ermöglicht die Suche nach Tickets.
-- Die AnalysisPage-Komponente zeigt Analysen zu den Tickets an.
-
-### API-Endpunkte:
-
-- **Tickets API**: Verwaltet CRUD-Operationen für Tickets.
-- **Search API**: Verwaltet die Suche nach Tickets.
-- **Analysis API**: Stellt Analysedaten zu den Tickets bereit.
-
-### Datenbank:
-
-- **MongoDB mit Ticket-Schema**: Speichert Ticketinformationen wie Titel, Beschreibung, Priorität, Status usw.
-
-## 4. Projektbeschreibung
-
-Das Projekt "Ticket Flow" zielt darauf ab, eine webbasierte Anwendung zur Verwaltung von IT-Tickets bereitzustellen. Diese Anwendung ermöglicht es Nutzern, Tickets zu erstellen, zu aktualisieren, nach ihnen zu suchen und Analysen darüber durchzuführen.
-
-### Funktionen
-
-Die entwickelte Webanwendung bietet Nutzern folgende Möglichkeiten:
-
-- Tickets zu erstellen und zu aktualisieren.
-- Nach Tickets zu suchen.
-- Analysen über die Tickets durchzuführen.
-- Ein übersichtliches Dashboard anzuzeigen, das Tickets je nach ihrem Status in verschiedenen Spalten darstellt.
-
-### Applikation im Browser
+## 2. Preview
 
 ![Board-page](public/pages_overview/board-page.png)
 
@@ -130,6 +37,81 @@ Die entwickelte Webanwendung bietet Nutzern folgende Möglichkeiten:
 
 ![Analysis-page](public/pages_overview/analysis-page.png)
 
-### Reporting
+## 3. Component Diagram
 
-![Reporting](public/reporting.png)
+![Component Diagram](public/componentdiagram-tf.png)
+
+### Client-side:
+
+- The Navigation component manages links to different pages.
+- The Dashboard component displays tickets on the board using the TicketCard component.
+- The TicketForm component is used to create and update tickets.
+- The SearchPage component allows searching for tickets.
+- The AnalysisPage component displays analyses of the tickets.
+
+### API Endpoints:
+
+- **Tickets API**: Manages CRUD operations for tickets.
+- **Search API**: Manages ticket searches.
+- **Analysis API**: Provides analysis data for the tickets.
+
+### Database:
+
+- **MongoDB with Ticket Schema**: Stores ticket information such as title, description, priority, status, etc.
+
+## 4. User Stories
+
+### User Story 1: Create Ticket
+
+**Description:** As a user, I want to create a new ticket so that I can track tasks or issues that need to be addressed.
+
+**Acceptance Criteria:**
+
+- The "Create New Ticket" form should include fields for title, description, category, priority, progress, and status.
+- The user should be able to select a category from a predefined list (e.g., task, user story).
+- The user should be able to set the ticket's priority (low, medium, high, very high).
+- The user should be able to set the ticket's progress using a slider.
+- The user should be able to set the ticket's status (to-do, in progress, done).
+- The user should receive a confirmation message after successfully creating a ticket.
+
+### User Story 2: Display Tickets on the Board
+
+**Description:** As a user, I want to display all tickets on a board so that I can see the status of each ticket at a glance.
+
+**Acceptance Criteria:**
+
+- The board should have three columns: to-do, in progress, and done.
+- Tickets should be displayed under the appropriate column based on their status.
+- Each ticket should display the title, description, priority, progress, and creation date.
+- The user should be able to visually recognize the priority and progress of each ticket.
+
+### User Story 3: Update Ticket Status
+
+**Description:** As a user, I want to update the status of a ticket so that I can track the progress of my tasks.
+
+**Acceptance Criteria:**
+
+- The user should be able to click on an existing ticket and be redirected to the "Update Ticket" page.
+- On the "Update Ticket" page, the user should be able to redefine the ticket details.
+- The user should receive a confirmation message after successfully updating the ticket status.
+
+### User Story 4: Search for Tickets
+
+**Description:** As a user, I want to search for a specific ticket so that I can quickly find it and check its details.
+
+**Acceptance Criteria:**
+
+- The user should be able to enter a search term in the search bar.
+- The search results should display tickets that match the search term.
+- Each result should display the ticket's title, description, and creation date.
+- The user should be able to click on a ticket in the search results to view its full details.
+
+### User Story 5: Analyze Ticket Data
+
+**Description:** As a user, I want to analyze the ticket data so that I can understand the overall progress and performance.
+
+**Acceptance Criteria:**
+
+- The analysis page should display metrics such as the total number of tickets, the number of tasks, the number of bugs, the number of user stories, the board completion percentage, the average priority, and the number of tickets created in the last 24 hours.
+- Each metric should be presented in a clear and easily readable format.
+- The user should be able to access the analysis page from the main navigation bar.
